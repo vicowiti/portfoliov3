@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import Image from "next/image";
 
 const roles = ["Full Stack Engineer", "Mobile Developer"];
 
@@ -10,6 +11,7 @@ export default function Hero() {
   const bioRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLAnchorElement>(null);
   const cursorRef = useRef<HTMLSpanElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
 
   const [displayedRole, setDisplayedRole] = useState("");
   const [roleIndex, setRoleIndex] = useState(0);
@@ -34,6 +36,12 @@ export default function Hero() {
         { y: 20, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.5 },
         "-=0.3",
+      )
+      .fromTo(
+        imageRef.current,
+        { opacity: 0, scale: 1.03 },
+        { opacity: 1, scale: 1, duration: 1 },
+        "-=1",
       );
 
     gsap.to(cursorRef.current, {
@@ -67,48 +75,66 @@ export default function Hero() {
   return (
     <section
       ref={containerRef}
-      className="min-h-screen bg-black flex flex-col justify-center px-10 md:px-20"
+      className="min-h-screen bg-black flex items-center px-6 md:px-20"
     >
-      <div className="max-w-3xl">
-        <p className="text-white/30 text-xs tracking-[0.3em] uppercase mb-6">
-          Software Developer
-        </p>
+      <div className="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+        {/* Left - text content */}
+        <div>
+          <p className="text-white/30 text-xs tracking-[0.3em] uppercase mb-6">
+            Software Developer
+          </p>
 
-        <h1
-          ref={nameRef}
-          className="text-white text-5xl md:text-7xl font-semibold tracking-tight leading-none mb-6"
-        >
-          Victor Owiti
-        </h1>
+          <h1
+            ref={nameRef}
+            className="text-white text-5xl md:text-7xl font-semibold tracking-tight leading-none mb-6"
+          >
+            Victor Owiti
+          </h1>
 
-        <div className="flex items-center gap-2 mb-8 h-8">
-          <span className="text-white/60 text-lg md:text-xl font-light tracking-wide">
-            {displayedRole}
-          </span>
-          <span
-            ref={cursorRef}
-            className="inline-block w-0.5 h-5 bg-white/60"
-          />
+          <div className="flex items-center gap-2 mb-8 h-8">
+            <span className="text-white/60 text-lg md:text-xl font-light tracking-wide">
+              {displayedRole}
+            </span>
+            <span
+              ref={cursorRef}
+              className="inline-block w-0.5 h-5 bg-white/60"
+            />
+          </div>
+
+          <p
+            ref={bioRef}
+            className="text-white/40 text-base md:text-lg leading-relaxed max-w-xl mb-12"
+          >
+            User-centered design and development is my forte - transforming user
+            needs into working solutions. I love challenging myself daily,
+            learning new technologies, and watching a project grow from an idea
+            into a problem-solving product.
+          </p>
+
+          <a
+            ref={ctaRef}
+            href="#projects"
+            className="inline-flex items-center gap-3 border border-white/20 text-white/70 hover:text-white hover:border-white/60 text-sm tracking-widest uppercase px-8 py-4 transition-all duration-300"
+          >
+            View my work
+            <span className="text-base leading-none">&#8594;</span>
+          </a>
         </div>
 
-        <p
-          ref={bioRef}
-          className="text-white/40 text-base md:text-lg leading-relaxed max-w-xl mb-12"
-        >
-          User-centered design and development is my forte — transforming user
-          needs into working solutions. I love challenging myself daily,
-          learning new technologies, and watching a project grow from an idea
-          into a problem-solving product.
-        </p>
-
-        <a
-          ref={ctaRef}
-          href="#projects"
-          className="inline-flex items-center gap-3 border border-white/20 text-white/70 hover:text-white hover:border-white/60 text-sm tracking-widest uppercase px-8 py-4 transition-all duration-300"
-        >
-          View my work
-          <span className="text-base leading-none">&#8594;</span>
-        </a>
+        {/* Right - photo */}
+        <div ref={imageRef} className="hidden md:flex justify-end items-center">
+          <div className="relative w-[340px] xl:w-[400px] aspect-[3/4] overflow-hidden border border-white/10">
+            <Image
+              src="/images/victor.jpeg"
+              alt="Victor Owiti"
+              fill
+              priority
+              className="object-cover object-top grayscale"
+            />
+            {/* Subtle bottom fade so it blends into the black bg */}
+            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
+          </div>
+        </div>
       </div>
     </section>
   );
