@@ -23,6 +23,62 @@ interface Project {
 
 const projects: Project[] = [
   {
+    name: "ShuleSmart Parents",
+    type: "Android Application",
+    role: "Full Stack Developer",
+    description:
+      "A parent portal for Kenyan schools. Parents switch between their children and track fee balances, statements and receipts, exam results with subject-level analysis, attendance, and school events, all from one app.",
+    highlights: [
+      "Multi-child accounts with a student switcher, so parents with several children at one or more schools can move between them instantly.",
+      "Finance module showing live fee balances, term billing, payments and balance due, with downloadable term statements, full statements, and individual receipts as PDFs.",
+      "Exam results with CBC grade bands, mean, points and deviation, plus downloadable report forms.",
+      "Per-exam performance analysis with custom-built charts: score by subject against the class average, change since the last exam, and an auto-generated written summary of strengths and areas needing attention.",
+      "Attendance tracking with daily status, weekly view, and a yearly per-month breakdown.",
+      "Term events calendar built from scratch, with event days marked and tap-to-filter.",
+      "Secure JWT authentication with refresh tokens, password reset, and in-app password change.",
+      "Built on a Spring Boot API over a large legacy MariaDB school management database (447 tables).",
+    ],
+    stack: [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "Redux Toolkit",
+      "Expo Router",
+      "Spring Boot",
+      "MariaDB",
+    ],
+    link: "https://play.google.com/store/apps/details?id=com.shulesmart.parents",
+    linkLabel: "View on Play Store",
+    icon: FiSmartphone,
+    screenshotLayout: "mobile",
+    screenshots: [
+      {
+        src: "/projects/shulesmart/screenshot-1.png",
+        alt: "ShuleSmart Parents dashboard",
+      },
+      {
+        src: "/projects/shulesmart/screenshot-2.jpeg",
+        alt: "ShuleSmart Parents fee balance and statements",
+      },
+      {
+        src: "/projects/shulesmart/screenshot-3.jpeg",
+        alt: "ShuleSmart Parents exam performance analysis",
+      },
+      {
+        src: "/projects/shulesmart/screenshot-6.jpeg",
+        alt: "ShuleSmart Parents exam  analysis",
+      },
+      {
+        src: "/projects/shulesmart/screenshot-4.png",
+        alt: "ShuleSmart Parents attendance tracking",
+      },
+      {
+        src: "/projects/shulesmart/screenshot-5.png",
+        alt: "ShuleSmart Parents events calendar",
+      },
+    ],
+  },
+  {
     name: "Zera Africa",
     type: "Android Application",
     role: "Full Stack Developer",
