@@ -36,7 +36,7 @@ const projects: Project[] = [
       "Attendance tracking with daily status, weekly view, and a yearly per-month breakdown.",
       "Term events calendar built from scratch, with event days marked and tap-to-filter.",
       "Secure JWT authentication with refresh tokens, password reset, and in-app password change.",
-      "Built on a Spring Boot API over a large legacy MariaDB school management database (447 tables).",
+      // "Built on a Spring Boot API over a large legacy MariaDB school management database (447 tables).",
     ],
     stack: [
       "React Native",
